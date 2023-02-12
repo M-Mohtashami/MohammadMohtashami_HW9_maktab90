@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>HW9_Q01</title>
+  </head>
+  <body>
+    <main class="container">
+      <hr />
+      <form name="search-person">
+        <p class="h2 my-3">Search the visitors:</p>
+        <table class="table table-striped" id="age-table">
+          <tbody>
+            <tr>
+              <td>Age:</td>
+              <td id="age-list">
+                <label class="form-group form-check-lable">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="age"
+                    value="young"
+                  />
+                  less than 18
+                </label>
+                <label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="age"
+                    value="mature"
+                  />
+                  18-50
+                </label>
+                <label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="age"
+                    value="senior"
+                  />
+                  more than 50
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>Additionally:</td>
+              <td class="row">
+                <input
+                  class="form-control col-12 col-md my-2 my-md-0"
+                  type="text"
+                  name="info[0]"
+                />
+                <input
+                  class="form-control col-12 col-md mx-md-2 my-2 my-md-0"
+                  type="text"
+                  name="info[1]"
+                />
+                <input
+                  class="form-control col-12 col-md my-2 my-md-0"
+                  type="text"
+                  name="info[2]"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <input class="btn btn-primary" type="submit" value="Search!" />
+      </form>
+    </main>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

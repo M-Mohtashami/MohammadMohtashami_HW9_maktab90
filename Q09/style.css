@@ -12,6 +12,9 @@ body,
   width: 100%;
   height: 100%;
 }
+.container {
+  position: relative;
+}
 .center {
   position: absolute;
   top: 50%;
@@ -25,4 +28,6 @@ body,
   border-radius: 5px;
   text-align: center;
   padding: 5px;
+  display: inline;
+  position: absolute;
 }

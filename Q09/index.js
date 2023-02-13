@@ -4,17 +4,20 @@ const container = document.getElementById("container");
 document.addEventListener("mouseover", (event) => {
   const tooltip = event.target.dataset.tooltip;
   if (tooltip) {
-    let pos = event.target.getBoundingClientRect();
+    const pos = event.target.getBoundingClientRect();
     const tooltipBox = document.createElement("div");
     tooltipBox.append(tooltip);
     tooltipBox.classList.add("tooltip");
     tooltipBox.id = "tooltip";
-    tooltipBox.setAttribute(
-      "style",
-      `position:absolute; top:${pos.bottom + 5}px;`
-    );
     container.append(tooltipBox);
-    console.log(pos.top, pos.right, pos.bottom, pos.left);
+    let top;
+    let left;
+    left = pos.left - tooltipBox.offsetWidth / 2 + event.target.offsetWidth / 2;
+    top = pos.top - tooltipBox.offsetHeight - 5;
+    if (left <= 0) left = 0;
+    if (top <= 0) top = pos.bottom + 5;
+    console.log(left, event.target.offsetWidth);
+    tooltipBox.setAttribute("style", `top:${top}px;left:${left}px;`);
   }
 });
 document.addEventListener("mouseout", (event) => {

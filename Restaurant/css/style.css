@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "vazir";
+  src: url("/Restaurant/assets/fonts/Vazir-Regular-FD.woff");
+}
+body {
+  font-family: "vazir";
+}

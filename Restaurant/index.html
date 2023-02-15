@@ -55,7 +55,7 @@
             <span>تخفیف:</span>
             <span id="tip-percent">0 درصد</span>
           </div>
-          <div class="col-12 d-flex mb-3 mt-1 input-group">
+          <div class="col-12 d-flex mb-3 mt-1 p-0 input-group">
             <input
               id="tip-code"
               type="text"
@@ -67,6 +67,8 @@
               id="tip-btn"
               class="w-25 btn bg-danger rounded-0 rounded-end m-0"
               src="/Restaurant/assets/img/tick.png"
+              data-bs-toggle="modal"
+              data-bs-target="#myModal"
             />
           </div>
           <div
@@ -76,15 +78,42 @@
             <span id="final-price">0 تومان</span>
           </div>
           <div
-            class="col-12 bg-danger my-2 rounded-1 d-flex flex-wrap align-items-center justify-content-between"
+            class="col-12 bg-danger my-2 p-0 rounded-1 flex-wrap align-items-center justify-content-between"
           >
-            <button id="finalize-order" class="btn btn-danger w-100">
+            <button
+              id="finalize-order"
+              class="btn btn-danger w-100"
+              data-bs-toggle="modal"
+              data-bs-target="#myModal"
+            >
               ثبت سفارش
             </button>
           </div>
         </div>
       </div>
     </main>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="modal-message"></div>
+        </div>
+      </div>
+    </div>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/index.js"></script>
   </body>

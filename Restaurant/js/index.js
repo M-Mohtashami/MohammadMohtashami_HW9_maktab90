@@ -8,6 +8,7 @@ const tipCode = document.getElementById("tip-code");
 const tipBtn = document.getElementById("tip-btn");
 const finalPrice = document.getElementById("final-price");
 const finalizeOrder = document.getElementById("finalize-order");
+const modalMessage = document.getElementById("modal-message");
 
 const products = [
   {
@@ -71,6 +72,15 @@ const products = [
     picUrl: "/Restaurant/assets/img/salad.png",
   },
 ];
+const tips = {
+  طلایی: 30,
+  "نقره ای": 15,
+  برنزی: 5,
+};
+let orders = new Map();
+let services = 0;
+let finalTip = 0;
+let finalOrdersPrice = 0;
 
 function renderProducts(products) {
   productSection.innerHTML = "";
@@ -87,7 +97,7 @@ function renderProducts(products) {
       />
     </div>
     <div class="row col-8 p-0 m-0">
-      <div class="col-12"><span class="h4">${product.name}</span></div>
+      <div class="col-12"><span class="h5">${product.name}</span></div>
       <div class="col-12"><span>${product.price} تومان</span></div>
       <div
         class="row col-12 d-flex align-items-center justify-content-between mt-3 p-0"
@@ -125,5 +135,60 @@ renderProducts(products);
 
 productSection.addEventListener("click", (e) => {
   if (e.target.tagName !== "IMG") return;
-  console.log(e.target.dataset.value);
+  const parent = e.target.closest("[data-id]");
+  updateTotalPrice(parent, e.target);
+  // console.log(orders);
 });
+
+tipBtn.addEventListener("click", (e) => {
+  console.log(tips[tipCode.value.trim()]);
+  if (tips[tipCode.value.trim()]) {
+    tipPercent.innerHTML = `${tips[tipCode.value.trim()]} درصد`;
+    finalTip = tips[tipCode.value.trim()];
+  } else {
+    showModal("کد تخفیف معتبر نیست");
+  }
+  updateOrderStatus();
+});
+
+finalizeOrder.addEventListener("click", (e) => {
+  console.log(finalOrdersPrice);
+  if (finalOrdersPrice > 0) {
+    showModal("سفارش شما با موفقیت ثبت شد");
+  } else {
+    showModal("سفارشی وجود ندارد. لطفا حداقل یک محصول انتخاب کنید.");
+  }
+});
+
+function updateTotalPrice(product, btn) {
+  let amount = product.querySelector("[data-value = 'amount']");
+  let totalPrice = product.querySelector("[data-value = 'total-price']");
+  let target = products.find((item) => item.id === +product.dataset.id);
+  if (btn.dataset.value === "plus") amount.innerHTML = +amount.innerHTML + 1;
+  if (btn.dataset.value === "minus") amount.innerHTML = amount.innerHTML - 1;
+
+  totalPrice.innerHTML = `${+amount.innerHTML * target.price} تومان`;
+
+  orders.set(target.name, +amount.innerHTML * target.price);
+  updateOrderStatus();
+}
+
+function updateOrderStatus() {
+  let priceTotal = 0;
+  if (orders.size !== 0) {
+    priceTotal = [...orders.values()].reduce((sum, val) => sum + val);
+  }
+  services = priceTotal * 0.05;
+  totalOrders.innerHTML = `${priceTotal} تومان`;
+  serviceFee.innerHTML = `${services} تومان`;
+
+  finalOrdersPrice =
+    priceTotal + services - (priceTotal + services) * (finalTip / 100);
+  finalPrice.innerHTML = `${finalOrdersPrice} تومان`;
+
+  console.log(priceTotal, finalPrice);
+}
+
+function showModal(message = "") {
+  modalMessage.innerHTML = message;
+}

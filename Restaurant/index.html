@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.rtl.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>مک دونالد شعبه تهران</title>
+  </head>
+  <body class="bg-danger d-flex">
+    <main
+      class="d-flex flex-wrap align-items-center justify-content-center p-md-0 mx-5"
+    >
+      <div
+        class="row d-flex align-items-center justify-content-center align-items-md-start justify-content-md-start px-4 mx-0"
+      >
+        <div class="card col-12 col-md-7 col-lg-8 bg-white px-0 mx-0 my-3">
+          <div
+            class="card-header d-flex align-items-center justify-content-center"
+          >
+            <span class="h2 fw-bold text-center"
+              >رستوران مک دونالد شعبه تهران</span
+            >
+          </div>
+          <div class="container card-body overflow-y-scroll m-0">
+            <div
+              class="row justify-content-center g-3"
+              id="product-section"
+            ></div>
+          </div>
+        </div>
+
+        <div
+          class="row col-12 col-sm-8 col-md-4 col-lg-3 bg-light p-2 mx-4 my-3 rounded-3"
+        >
+          <div
+            class="col-12 d-flex flex-wrap align-items-center justify-content-between"
+          >
+            <span>جمع کل سفارشات:</span>
+            <span id="total-orders">0 تومان</span>
+          </div>
+          <div
+            class="col-12 d-flex flex-wrap align-items-center justify-content-between"
+          >
+            <span>حق سرویس و کارمزد:</span>
+            <span id="service-fee">0 تومان</span>
+          </div>
+          <div
+            class="col-12 d-flex flex-wrap align-items-center justify-content-between"
+          >
+            <span>تخفیف:</span>
+            <span id="tip-percent">0 درصد</span>
+          </div>
+          <div class="col-12 d-flex mb-3 mt-1 p-0 input-group">
+            <input
+              id="tip-code"
+              type="text"
+              class="form-control rounded-0 rounded-start p-0 px-2 m-0"
+              placeholder="کد تخفیف"
+            />
+
+            <img
+              id="tip-btn"
+              class="w-25 btn bg-danger rounded-0 rounded-end m-0"
+              src="/Restaurant/assets/img/tick.png"
+              data-bs-toggle="modal"
+              data-bs-target="#myModal"
+            />
+          </div>
+          <div
+            class="col-12 bg-warning rounded-1 d-flex flex-wrap align-items-center justify-content-between py-1"
+          >
+            <span>مبلغ قابل پرداخت:</span>
+            <span id="final-price">0 تومان</span>
+          </div>
+          <div
+            class="col-12 bg-danger my-2 p-0 rounded-1 flex-wrap align-items-center justify-content-between"
+          >
+            <button
+              id="finalize-order"
+              class="btn btn-danger w-100"
+              data-bs-toggle="modal"
+              data-bs-target="#myModal"
+            >
+              ثبت سفارش
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="modal-message"></div>
+        </div>
+      </div>
+    </div>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

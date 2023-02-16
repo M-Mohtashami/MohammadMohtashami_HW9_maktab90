@@ -4,12 +4,18 @@
 }
 html,
 body {
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 body {
   font-family: "vazir";
 }
 
+.card-body {
+  height: 75vh;
+  overflow-y: scroll;
+  direction: ltr;
+}
 ::-webkit-scrollbar {
   width: 10px;
 }

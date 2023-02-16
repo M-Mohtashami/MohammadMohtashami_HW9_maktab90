@@ -86,8 +86,9 @@ function renderProducts(products) {
   productSection.innerHTML = "";
 
   products.map((product) => {
-    const productCard = `<div data-id=${product.id}
-    class="row col-lg-10 col-xl-5 border border-light rounded-4 shadow m-1 my-4 p-2 mx-lg-4"
+    const productCard = `<div class="col-lg-10 col-xl-6" dir="rtl">
+    <div data-id=${product.id}
+    class="row border border-light rounded-4 shadow m-0 my-2 p-2"
   >
     <div class="col-4">
       <img
@@ -97,7 +98,7 @@ function renderProducts(products) {
       />
     </div>
     <div class="row col-8 p-0 m-0">
-      <div class="col-12"><span class="h5">${product.name}</span></div>
+      <div class="col-12"><span class="h6 fw-bold">${product.name}</span></div>
       <div class="col-12"><span>${product.price} تومان</span></div>
       <div
         class="row col-12 d-flex align-items-center justify-content-between mt-3 p-0"
@@ -127,7 +128,8 @@ function renderProducts(products) {
         </div>
       </div>
     </div>
-  </div>`;
+  </div>
+    </div>`;
     productSection.insertAdjacentHTML("beforeend", productCard);
   });
 }
